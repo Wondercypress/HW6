@@ -2,7 +2,7 @@ var video = document.querySelector("#player1");
 var volumeDisplay = document.querySelector("#volume");
 var slider = document.querySelector("#slider");
 
-window.addEventListener("load", () => {
+window.addEventListener("load", function() {
     video.autoplay = false;
     video.loop = false;
     video.preload = true;
@@ -17,24 +17,25 @@ video.addEventListener("volumechange", function() {
 document.querySelector("#play").addEventListener("click", function() {
     console.log("Play Video");
     video.play();
+    volumeDisplay.innerHTML = `${Math.round(video.volume * 100)}%`;
 });
 
-document.querySelector("#pause").addEventListener("click", () => {
+document.querySelector("#pause").addEventListener("click", function() {
     console.log("Pause Video");
     video.pause();
-})
+});
 
-document.querySelector("#slower").addEventListener("click", () =>{
+document.querySelector("#slower").addEventListener("click", function() {
     console.log(video.playbackRate);
     video.playbackRate *= 0.9;
 });
 
-document.querySelector("#faster").addEventListener("click", () =>{
+document.querySelector("#faster").addEventListener("click", function() {
     video.playbackRate *= 1.1;
     console.log(`New speed is ${video.playbackRate}`);
 });
 
-document.querySelector("#skip").addEventListener("click", () =>{
+document.querySelector("#skip").addEventListener("click", function() {
     if (video.currentTime + 10 < video.duration){
         video.currentTime += 10;
     }
@@ -46,7 +47,7 @@ document.querySelector("#skip").addEventListener("click", () =>{
 });
 
 var muteButton = document.querySelector("#mute");
-muteButton.addEventListener("click", () =>{
+muteButton.addEventListener("click", function() {
     if (video.muted){
         video.muted = false;
         muteButton.innerHTML = "Mute";
@@ -57,15 +58,15 @@ muteButton.addEventListener("click", () =>{
     }
 });
 
-slider.addEventListener("input", () => {
+slider.addEventListener("input", function() {
     video.volume = slider.value / 100;
     console.log(video.volume);
 });
 
-document.querySelector("#vintage").addEventListener("click", () =>{
+document.querySelector("#vintage").addEventListener("click", function(){
     video.classList.add("oldSchool");
 });
 
-document.querySelector("#orig").addEventListener("click", () => {
+document.querySelector("#orig").addEventListener("click", function() {
     video.classList.remove("oldSchool");
 });
