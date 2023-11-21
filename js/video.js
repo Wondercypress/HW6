@@ -6,7 +6,6 @@ window.addEventListener("load", function() {
     video.autoplay = false;
     video.loop = false;
     video.preload = true;
-    video.volume = slider.value / 100;
     volumeDisplay.innerHTML = `${video.volume*100}%`;
 });
 
@@ -16,8 +15,10 @@ video.addEventListener("volumechange", function() {
 
 document.querySelector("#play").addEventListener("click", function() {
     console.log("Play Video");
-    video.play();
+    video.volume = slider.value / 100;
     volumeDisplay.innerHTML = `${Math.round(video.volume * 100)}%`;
+
+    video.play();
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
