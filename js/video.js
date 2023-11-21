@@ -1,16 +1,5 @@
-var video;
-
-window.addEventListener("load", function() {
-	console.log("Good job opening the window")
-
-});
-
-// document.querySelector("#play").addEventListener("click", function() {
-// 	console.log("Play Video");
-// });
-
-const video = document.querySelector("#player1");
-const volumeDisplay = document.querySelector("#volume")
+var video = document.querySelector("#player1");
+var volumeDisplay = document.querySelector("#volume")
 
 window.addEventListener("load", () => {
 	video.autoplay = false
@@ -47,7 +36,7 @@ document.querySelector("#skip").addEventListener("click", () =>{
 	}
 	else{
 		video.currentTime = 0
-		console.log("Going back to start")
+		console.log("Going back to beginning")
 	}
 	console.log(`New location ${video.currentTime}`)
 })
@@ -66,15 +55,15 @@ muteButton.addEventListener("click", () =>{
 
 var slider = document.querySelector("#slider")
 slider.addEventListener("input", () => {
-	console.log(video.volume)
 	volumeDisplay.innerHTML = `${slider.value}%`
 	video.volume = slider.value/100
+	console.log(video.volume)
 })
 
 document.querySelector("#vintage").addEventListener("click", () =>{
-	video.classList.add("oldSchool")
+	video.classList.add("OldSchool")
 })
 
 document.querySelector("#orig").addEventListener("click", () => {
-	video.classList.remove("oldSchool")
+	video.classList.remove("OldSchool")
 })
